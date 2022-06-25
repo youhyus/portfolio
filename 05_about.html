@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  /* 한글 폰트 */
+  @font-face {
+    font-family: "gothica1";
+    src: url(./source_defalt/Gothica1/GothicA1-Medium.ttf);
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "gothica1";
+    src: url(./source_defalt/Gothica1/GothicA1-SemiBold.ttf);
+    font-weight: 600;
+  }
+
+  @font-face {
+    font-family: "gothica1";
+    src: url(./source_defalt/Gothica1/GothicA1-ExtraBold.ttf);
+    font-weight: 800;
+  }
+
+  /* 영문 폰트 */
+  @font-face {
+    font-family: "mabrypro";
+    src: url(./source_defalt/Mabry_pro/mabry-light-pro.ttf);
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: "mabrypro";
+    src: url(./source_defalt/Mabry_pro/mabry-regular-pro.ttf);
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: "mabrypro";
+    src: url(./source_defalt/Mabry_pro/Mabry-Pro-Medium.ttf);
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "mabrypro";
+    src: url(./source_defalt/Mabry_pro/Mabry-Pro-Black.ttf);
+    font-weight: 900;
+  }
+
+  @font-face {
+    font-family: "fugue";
+    src: url(./source_defalt/fugue/fugue_regular.otf);
+  }
+
+  /* 기본 설정 */
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "mabrypro", "gothica1";
+    word-break: keep-all;
+  }
+
+  #underline {
+    text-decoration: underline;
+  }
+
+  body {
+    margin: 0 2.5vw 0 2.5vw;
+  }
+
+  body::-webkit-scrollbar {
+    width: 0;
+  }
+
+  img {
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  /*NAVI 버튼 파란밑줄 없애기*/
+  a {
+    text-decoration: none;
+  }
+
+  a:link {
+    color: inherit;
+  }
+
+  a:visited {
+    color: inherit;
+  }
+
+  a:hover {
+    color: inherit;
+  }
+
+  a:active {
+    color: inherit;
+  }
+
+  /*HEADER 헤더*/
+  header {
+    margin: 15px 0 6vh 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /*HEADER 헤더 제목*/
+  .header_name {
+    font-family: "fugue";
+    font-size: 1.2vw;
+    letter-spacing: -0.01em;
+  }
+
+  #header_namekor {
+    font-size: 1vw;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    position: relative;
+
+    padding-left: 0.2vw;
+  }
+
+  .header_navi {
+    font-size: 1vw;
+  }
+
+  .header_navi>a {
+    margin-left: 1.5vw;
+  }
+
+  /* 바디 내용 시작 web web 웹 */
+  .container {
+    height: 80vh;
+    overflow: auto;
+    margin-bottom: 50px;
+    font-size: 1vw;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .column-left {
+    width: 75%;
+    overflow: auto;
+  }
+
+  .card {
+    padding-bottom: 1.2vw;
+    margin-bottom: 1.2vw;
+    border-bottom: 1px solid black;
+    display: flex;
+  }
+
+  .txt {
+    flex: 1;
+  }
+
+  .category {
+    width: 12vw;
+  }
+
+  .card-now {
+    color: rgb(255, 50, 0);
+  }
+
+  /* 우측 Column */
+  .column-right {
+    width: 25vw;
+    font-size: 1vw;
+    line-height: 140%;
+  }
+
+  .textbox {
+    margin-left: 2vw;
+    padding: 1vw;
+    border: 1px solid rgb(255, 50, 0);
+    ;
+  }
+
+  #instagram:hover {
+    color: blue;
+  }
+
+  /* FOOTER 하단바 웹사이즈 */
+  footer {
+    background-color: #f7f7f7;
+    margin: 0 -2.5vw 0 -2.5vw;
+    padding: 3vh 2.5vw 6vh 2.5vw;
+    font-size: 0.85vw;
+    font-weight: 400;
+    line-height: 140%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer_row {
+    margin: 0 0 6vh 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer_c4 {
+    text-align: right;
+  }
+
+  #bigger {
+    font-size: 3vw;
+    font-weight: 300;
+  }
+
+  /* 모바일사이즈  모바일사이즈  모바일사이즈 */
+  /* 모바일사이즈  모바일사이즈  모바일사이즈 */
+  @media only screen and (max-width: 700px) {
+    body {
+      margin: 0 3.8vw 0 3.8vw;
+    }
+
+    header {
+      margin: 1.5vh 0 6vh 0;
+    }
+
+    .header_name {
+      font-size: 4.2vw;
+    }
+
+    #header_namekor {
+      font-size: 3.5vw;
+    }
+
+    .header_navi {
+      font-size: 4vw;
+    }
+
+    .header_navi>a {
+      margin-left: 3vw;
+    }
+
+    /* 바디  바디  바디 mobile */
+    .container {
+      display: block;
+      margin-bottom: 12vh;
+      height: auto;
+      font-size: 3.5vw;
+      line-height: 140%;
+    }
+
+    .column-left {
+      width: 100%;
+    }
+
+    .card {
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid black;
+    }
+
+    .category {
+      width: 25%;
+    }
+
+    .projectname {
+      flex: 1;
+    }
+
+    .column-right {
+      width: 100%;
+      margin: 0;
+      font-size: 3.5vw;
+    }
+
+    .textbox {
+      margin: 0;
+      padding: 3.8vw;
+    }
+
+    /* FFFFFOOOOOTER mobile */
+    footer {
+      background-color: #f7f7f7;
+      margin: 0 -3.8vw 0 -3.8vw;
+      padding: 3vh 3.8vw 6vh 3.8vw;
+
+      font-size: 3vw;
+    }
+
+    .footer_row {
+      margin: 0 0 6vh 0;
+    }
+
+    .footer_c4 {
+      display: none;
+    }
+
+    .footer_row {
+      margin: 0 0 6vh 0;
+    }
+
+    .footer_c4 {
+      display: none;
+    }
+  }
+</style>
+
+<body>
+  <header>
+    <a class="header_name" href="./index.html">
+      Younghyun Song <span id="header_namekor">송영현</span>
+    </a>
+    <div class="header_navi">
+      <a href="./04_interest_snow.html">interest</a>
+      <a href="./05_about.html">about</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="column-left">
+      <div class="card card-edu">
+        <div class="category">
+          Education
+        </div>
+        <div class="txt card-edu">
+          Ewha W. University (B.A) / Industrial design
+          <br>
+          2014. 03 - 2020. 02
+        </div>
+      </div>
+      <div class="card card-edu">
+        <div class="category">
+          Education
+        </div>
+        <div class="txt card-edu">
+          University of Central Lancashire, UK (Exchange Student) / Photography
+          <br>
+          2016. 09 - 2017. 01
+        </div>
+      </div>
+      <div class="card card-work">
+        <div class="category">
+          2021
+        </div>
+        <div class="txt card-work">
+          Studio fnt / Graphic designer &nbsp; <span class="card-now">//Now//</span>
+          <br>
+          2021. 07 -
+        </div>
+      </div>
+      <div class="card card-work">
+        <div class=" category">
+          2020
+        </div>
+        <div class="txt card-work">
+          Amorepacific / Contents designer
+          <br>
+          UI for Mobile live commerce
+          <br>
+          Mood film (Film, Edit, Design) & Digital contents
+          <br>
+          Photograph Assistant
+          <br>
+          2020. 02 - 2021. 07
+        </div>
+      </div>
+      <div class="card card-ex">
+        <div class="category">
+          2019
+        </div>
+        <div class="txt card-ex">
+          Asyaaf / Exhibition / Participated as an object designer
+          <br>
+          2019. 08
+        </div>
+      </div>
+      <div class="card">
+        <div class="category">
+        </div>
+        <div class="txt card-work">
+          Allganic / Identity and Digital designer
+          <br>
+          Brand identity for Allganic in China & Korea
+          <br>
+          Digital Contents
+          <br>
+          Packagings
+          <br>
+          2018. 08 - 2019. 07
+        </div>
+      </div>
+      <div class="card card-ex">
+        <div class="category">
+          2018
+        </div>
+        <div class=" txt card-ex">
+          Amorepacific / Prized / Product concept
+          <br>
+          2018. 06
+        </div>
+      </div>
+      <div class="card card-sch">
+        <div class="category">
+        </div>
+        <div class=" txt card-sch">
+          Pigeon / 40th Anniversary Promotion Project
+          <br>
+          2018. 03 - 2018. 06
+        </div>
+      </div>
+      <div class="card card-sch">
+        <div class=" category">
+          2017
+        </div>
+        <div class=" txt card-sch">
+          Amorepacific / Next Cushion Project
+          <br>
+          Product development
+          <br>
+          2017. 05 - 2017. 12
+        </div>
+      </div>
+      <div class="card" style="border-bottom: 0px;">
+        <div class="category">
+        </div>
+        <div class="txt card-edu">
+          RISD in Seoul (Workshop) / Urban Micro Housing
+          <br>
+          2017. 09 - 2017. 12
+        </div>
+      </div>
+    </div>
+
+    <div class="column-right">
+      <div class="textbox">
+        Younghyun Song has interest in various field such as graphic, film, 3d modeling and Photography.
+        <br><br>
+        <div class="contact">
+          📷 &nbsp; <a id="instagram" href="https://www.instagram.com/ma_frame/">@ma_frame</a><br>
+          ✉️ &nbsp; yhyun4156@gmail.com <br>
+          ✉️ &nbsp; younghyun.fnt@gmail.com </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer_row">
+      <div class="footer_c1">
+        <a class="header_name" href="./index.html">Younghyun Song</a>
+      </div>
+      <div class="footer_c2">
+        in Seoul<br>
+        Graphic Designer <br>
+        Brand Thinker <br>
+      </div>
+      <div class="footer_c3">
+        Contact <br>
+        <span id="underline">
+          <a href="mailto:" yhyun4156@gmail.com">yhyun4156@gmail.com</a><br>
+          <a href="https://www.instagram.com/ma_frame/" target="_blank">instagram ↗</a>
+        </span>
+      </div>
+      <div class="footer_c4">
+        <a id="bigger" href="#">↑</a>
+      </div>
+    </div>
+    <div>
+      © Younghyun Song. 2022 </div>
+  </footer>
+</body>
+
+</html>

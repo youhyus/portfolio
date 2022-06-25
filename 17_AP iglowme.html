@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  /* 한글 폰트 */
+  @font-face {
+    font-family: "gothica1";
+    src: url(./source_defalt/Gothica1/GothicA1-Medium.ttf);
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "gothica1";
+    src: url(./source_defalt/Gothica1/GothicA1-SemiBold.ttf);
+    font-weight: 600;
+  }
+
+  @font-face {
+    font-family: "gothica1";
+    src: url(./source_defalt/Gothica1/GothicA1-ExtraBold.ttf);
+    font-weight: 800;
+  }
+
+  /* 영문 폰트 */
+  @font-face {
+    font-family: "mabrypro";
+    src: url(./source_defalt/Mabry_pro/mabry-light-pro.ttf);
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: "mabrypro";
+    src: url(./source_defalt/Mabry_pro/mabry-regular-pro.ttf);
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: "mabrypro";
+    src: url(./source_defalt/Mabry_pro/Mabry-Pro-Medium.ttf);
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "mabrypro";
+    src: url(./source_defalt/Mabry_pro/Mabry-Pro-Black.ttf);
+    font-weight: 900;
+  }
+
+  @font-face {
+    font-family: "fugue";
+    src: url(./source_defalt/fugue/fugue_regular.otf);
+  }
+
+  /* 기본 설정 */
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "mabrypro", "gothica1";
+    word-break: keep-all;
+  }
+
+  #underline {
+    text-decoration: underline;
+  }
+
+  body {
+    margin: 0 2.5vw 0 2.5vw;
+  }
+
+  body::-webkit-scrollbar {
+    width: 0;
+  }
+
+  img {
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  /*NAVI 버튼 파란밑줄 없애기*/
+  a {
+    text-decoration: none;
+  }
+
+  a:link {
+    color: inherit;
+  }
+
+  a:visited {
+    color: inherit;
+  }
+
+  a:hover {
+    color: inherit;
+  }
+
+  a:active {
+    color: inherit;
+  }
+
+  /*HEADER 헤더*/
+  header {
+    margin: 15px 0 6vh 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /*HEADER 헤더 제목*/
+  .header_name {
+    font-family: "fugue";
+    font-size: 1.2vw;
+    letter-spacing: -0.01em;
+  }
+
+  #header_namekor {
+    font-size: 1vw;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    position: relative;
+
+    padding-left: 0.2vw;
+  }
+
+  .header_navi {
+    font-size: 1vw;
+  }
+
+  .header_navi>a {
+    margin-left: 1.5vw;
+  }
+
+  /* 바디 내용 시작 */
+  .container {
+    height: 87vh;
+    display: flex;
+    margin-bottom: 100px;
+  }
+
+  .column-left {
+    width: 75%;
+    overflow: auto;
+  }
+
+  .column-left img {
+    /*더블이미지에 필수*/
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 2vh;
+  }
+
+  .img-double {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 0vw 12vw 0vw 12vw;
+  }
+
+  /*더블이미지*/
+  .img-double {
+    display: flex;
+    margin-bottom: 2vh;
+  }
+
+  .img-double>:first-child {
+    padding-right: 1.75vw;
+  }
+
+  .img-double>:last-child {
+    padding-left: 1.75vw;
+  }
+
+  .img-double-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  /* 유튜브 링크 */
+  .youtube {
+    position: relative;
+    padding-bottom: 56.26%;
+    height: 0;
+    overflow-y: hidden;
+    margin-bottom: 2vh;
+  }
+
+  .youtube iframe,
+  .youtube object,
+  .youtube embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    word-wrap: 100%;
+    height: 100%;
+  }
+
+  .mid_text {
+    font-size: 0.7vw;
+    line-height: 150%;
+    color: rgb(136, 136, 136);
+    text-align: center;
+    margin: 6vh 0 6vh 0;
+  }
+
+  .img_text {
+    font-size: 0.7vw;
+    line-height: 150%;
+    color: rgb(136, 136, 136);
+    margin: -1.5vh 0 2vh 0;
+  }
+
+  /* 우측 Column 우측 Column WEB 웹사이즈 */
+  .column-right {
+    width: 25vw;
+    padding: 0 0 0 2.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .full-text {
+    flex: 1;
+  }
+
+  .title {
+    font-family: "fugue";
+    font-size: 1.4vw;
+    letter-spacing: -0.02em;
+    line-height: 135%;
+    margin-bottom: 1.35vw;
+  }
+
+  .caption {
+    font-weight: 400;
+    font-size: 0.85vw;
+    letter-spacing: 98%;
+    line-height: 145%;
+  }
+
+  .page {
+    margin-top: 3vh;
+    color: #8b8b8b;
+  }
+
+  .page>a {
+    font-weight: 400;
+    font-size: 0.85vw;
+    letter-spacing: 98%;
+    color: #8b8b8b;
+  }
+
+  /* 우측 하단  WEB 웹사이즈 */
+  .right-summary-mobile {
+    display: none;
+  }
+
+  .right-summary-web {
+    font-size: 0.7vw;
+    line-height: 145%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .summary {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #00000050;
+    padding-bottom: 0.25vw;
+    margin-top: 0.25vw;
+  }
+
+  .summary:last-child {
+    border-bottom: 0px;
+  }
+
+  .summary1 {
+    width: 28%;
+  }
+
+  .summary2 {
+    flex: 1;
+  }
+
+  /* FOOTER 하단바 웹사이즈 */
+  footer {
+    background-color: #f7f7f7;
+    margin: 0 -2.5vw 0 -2.5vw;
+    padding: 3vh 2.5vw 6vh 2.5vw;
+    font-size: 0.85vw;
+    font-weight: 400;
+    line-height: 140%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer_row {
+    margin: 0 0 6vh 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer_c4 {
+    text-align: right;
+  }
+
+  #bigger {
+    font-size: 3vw;
+    font-weight: 300;
+  }
+
+  @media only screen and (max-width: 700px) {
+    body {
+      display: block;
+      margin: 0 3.8vw 0 3.8vw;
+    }
+
+    header {
+      margin: 3vw 0 6vh 0;
+    }
+
+    .header_name {
+      font-size: 4.2vw;
+    }
+
+    #header_namekor {
+      font-size: 3.5vw;
+    }
+
+    .header_navi {
+      font-size: 4vw;
+    }
+
+    .header_navi>a {
+      margin-left: 3vw;
+    }
+
+    /* container  모바일사이즈 */
+    .container {
+      margin: 0;
+      height: 100%;
+      flex-direction: column-reverse;
+    }
+
+    .column-left {
+      width: 100%;
+      height: auto;
+      overflow: auto;
+    }
+
+    .column-left>img {
+      margin-bottom: 1vh;
+    }
+
+    .column-left>:last-child {
+      margin-bottom: 0;
+    }
+
+    .youtube {
+      margin-bottom: 3.5vw;
+    }
+
+    .mid_text {
+      font-size: 3vw;
+      line-height: 145%;
+      color: rgb(136, 136, 136);
+      text-align: center;
+      margin: 5vh 0 5vh 0;
+    }
+
+    .img_text {
+      font-size: 3vw;
+      line-height: 145%;
+      color: rgb(136, 136, 136);
+      margin: -0.5vh 0 1vh 0;
+    }
+
+    /* coloumn-right  모바일사이즈 */
+    .column-right {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+    }
+
+    .title {
+      font-weight: 500;
+      font-size: 5.5vw;
+      margin-bottom: 5vw;
+    }
+
+    .caption {
+      font-size: 3.2vw;
+    }
+
+    .full-text {
+      margin-bottom: 6vh;
+    }
+
+    .page {
+      font-size: 3.2vw;
+      line-height: 145%;
+    }
+
+    .page>a {
+      font-size: 3.2vw;
+      line-height: 145%;
+    }
+
+    /* SUMMARY mobile */
+    .right-summary-web {
+      display: none;
+    }
+
+    .right-summary-mobile {
+      display: block;
+      margin-top: 6vh;
+      margin-bottom: 12vh;
+      font-size: 3vw;
+    }
+
+    .summary {
+      padding-bottom: 1vw;
+      margin-top: 1vw;
+    }
+
+    .summary1 {
+      width: 22%;
+    }
+
+    /* FFFFFOOOOOTER mobile */
+    footer {
+      background-color: #f7f7f7;
+      margin: 0 -3.8vw 0 -3.8vw;
+      padding: 3vh 3.8vw 6vh 3.8vw;
+
+      font-size: 3vw;
+    }
+
+    .footer_row {
+      margin: 0 0 6vh 0;
+    }
+
+    .footer_c4 {
+      display: none;
+    }
+
+    .footer_row {
+      margin: 0 0 6vh 0;
+    }
+
+    .footer_c4 {
+      display: none;
+    }
+  }
+</style>
+
+<body>
+  <header>
+    <a class="header_name" href="./index.html">
+      Younghyun Song <span id="header_namekor">송영현</span>
+    </a>
+    <div class="header_navi">
+      <a href="./04_interest_snow.html">interest</a>
+      <a href="./05_about.html">about</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="column-left">
+      <img src="./17_AP/01_iglowme/iglowme_1.png" alt="">
+      <div class="youtube"> <iframe width="100%" height="100%"
+          src="https://www.youtube.com/embed/vdMWOL5SRVk?modestbranding=1&autoplay=1&mute=1&version=3&loop=1&playlist=vdMWOL5SRVk"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe> </div>
+      <div class="img-double">
+        <div class="img-double-box">
+          <img src="./17_AP/01_iglowme/iglowme_2.png" alt="">
+        </div>
+        <div class="img-double-box">
+          <img src="./17_AP/01_iglowme/iglowme_3.png" alt="">
+        </div>
+      </div>
+      <div class="mid_text">
+        한 달간 진행된 팝업 전시장에서의 활용 모습
+      </div>
+      <div class="mid_text">
+        아모레퍼시픽 럭셔리브랜드 Division에 소속되어 <br>
+        Hera, 설화수, AP 등의 브랜드 컨텐츠 제작에 기획 및 디자인으로 참여했습니다.
+      </div>
+    </div>
+
+    <div class="column-right">
+      <div class="full-text">
+        <div class="title">
+          I Glow Me collection film
+        </div>
+        <div class="caption">
+          ‘아이글로우미’ 컬렉션이 지향하는 컬러감을 강조하여 제작했습니다.
+          Guteform에서 제작한 타입로고를 영상 내 그래픽 요소로 활용했습니다.
+          <br><br>
+          HERA 유튜브, 한 달간 진행된 팝업 전시장에 사용되었습니다.
+        </div>
+        <div class="page">
+          Works for AP
+          <br>
+          <a href="./17_AP livecommerce.html">
+            - Live Commerce
+          </a>
+          <br>
+          <a href="./17_AP story.html">
+            - Instagram Teasing Story </a>
+          <br> <br>
+          Mood Films for AP
+          <br>
+          <a href="./13_AP Hera Cell Essence.html">
+            - Hera Cell Essence HOW TO film
+          </a>
+          <br>
+          <a id="underline" href="./17_AP iglowme.html">
+            - I Glow Me mood film
+          </a>
+          <br>
+          <a href="./17_AP powdermatte.html">
+            - Hera Sensual Powder Matte mood film
+          </a>
+          <br>
+          <a href="./17_AP airy blur priming powder.html">
+            - Airy Blur Priming Powder mood film
+          </a>
+          <br>
+          <a href="./17_AP time response.html">
+            - Time Response mood film
+          </a>
+        </div>
+      </div>
+
+      <div class="right-summary-web">
+        <div class="summary">
+          <div class="summary1">Project</div>
+          <div class="summary2">I Glow Me</div>
+        </div>
+        <div class="summary">
+          <div class="summary1">Field</div>
+          <div class="summary2">Film</div>
+        </div>
+        <div class="summary">
+          <div class="summary1">Date</div>
+          <div class="summary2">2020. 06</div>
+        </div>
+        <div class="summary">
+          <div class="summary1">Team</div>
+          <div class="summary2">Personal design work & <br>
+            Worked in a Content Team
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="right-summary-mobile">
+    <div class="summary">
+      <div class="summary1">Project</div>
+      <div class="summary2">I Glow Me</div>
+    </div>
+    <div class="summary">
+      <div class="summary1">Field</div>
+      <div class="summary2">Film</div>
+    </div>
+    <div class="summary">
+      <div class="summary1">Date</div>
+      <div class="summary2">2020. 06</div>
+    </div>
+    <div class="summary">
+      <div class="summary1">Team</div>
+      <div class="summary2">Personal design work & <br>
+        Worked in a Content Team
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer_row">
+      <div class="footer_c1">
+        <a class="header_name" href="./index.html">Younghyun Song</a>
+      </div>
+      <div class="footer_c2">
+        in Seoul<br>
+        Graphic Designer <br>
+        Brand Thinker <br>
+      </div>
+      <div class="footer_c3">
+        Contact <br>
+        <span id="underline">
+          <a href="mailto:" yhyun4156@gmail.com">yhyun4156@gmail.com</a><br>
+          <a href="https://www.instagram.com/ma_frame/" target="_blank">instagram ↗</a>
+        </span>
+      </div>
+      <div class="footer_c4">
+        <a id="bigger" href="#">↑</a>
+      </div>
+    </div>
+    <div>
+      © Younghyun Song. 2022 </div>
+  </footer>
+
+  <script>
+  </script>
+</body>
+
+</html>

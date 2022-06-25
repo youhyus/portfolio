@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  /* 한글 폰트 */
+  @font-face {
+    font-family: "gothica1";
+    src: url(./source_defalt/Gothica1/GothicA1-Medium.ttf);
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "gothica1";
+    src: url(./source_defalt/Gothica1/GothicA1-SemiBold.ttf);
+    font-weight: 600;
+  }
+
+  @font-face {
+    font-family: "gothica1";
+    src: url(./source_defalt/Gothica1/GothicA1-ExtraBold.ttf);
+    font-weight: 800;
+  }
+
+  /* 영문 폰트 */
+  @font-face {
+    font-family: "mabrypro";
+    src: url(./source_defalt/Mabry_pro/mabry-light-pro.ttf);
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: "mabrypro";
+    src: url(./source_defalt/Mabry_pro/mabry-regular-pro.ttf);
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: "mabrypro";
+    src: url(./source_defalt/Mabry_pro/Mabry-Pro-Medium.ttf);
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "mabrypro";
+    src: url(./source_defalt/Mabry_pro/Mabry-Pro-Black.ttf);
+    font-weight: 900;
+  }
+
+  @font-face {
+    font-family: "fugue";
+    src: url(./source_defalt/fugue/fugue_regular.otf);
+  }
+
+  /* 기본 설정 */
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "mabrypro", "gothica1";
+    word-break: keep-all;
+  }
+
+  #underline {
+    text-decoration: underline;
+  }
+
+  body {
+    margin: 0 2.5vw 0 2.5vw;
+  }
+
+  body::-webkit-scrollbar {
+    width: 0;
+  }
+
+  img {
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  /*NAVI 버튼 파란밑줄 없애기*/
+  a {
+    text-decoration: none;
+  }
+
+  a:link {
+    color: inherit;
+  }
+
+  a:visited {
+    color: inherit;
+  }
+
+  a:hover {
+    color: inherit;
+  }
+
+  a:active {
+    color: inherit;
+  }
+
+  /*HEADER 헤더*/
+  header {
+    margin: 15px 0 6vh 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /*HEADER 헤더 제목*/
+  .header_name {
+    font-family: "fugue";
+    font-size: 1.2vw;
+    letter-spacing: -0.01em;
+  }
+
+  #header_namekor {
+    font-size: 1vw;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    position: relative;
+
+    padding-left: 0.2vw;
+  }
+
+  .header_navi {
+    font-size: 1vw;
+  }
+
+  .header_navi>a {
+    margin-left: 1.5vw;
+  }
+
+  /* 옵션 바  옵션 바  옵션 바  옵션 바*/
+  .optionbar {
+    font-size: 1vw;
+    margin: 0 0 5vh 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Button */
+  #optionbtn {
+    background-color: rgba(0, 0, 0, 0);
+    text-decoration: underline;
+    color: black;
+    font-size: 1vw;
+    border: none;
+    cursor: pointer;
+  }
+
+  #optionbtn:hover,
+  #optionbtn:focus {
+    color: rgb(187, 187, 187);
+    text-decoration: underline;
+  }
+
+  .option-1 {
+    position: relative;
+    display: inline-block;
+  }
+
+  .option-dropdown {
+    margin: 5px 0px 0px -0.5vw;
+    padding-bottom: 15px;
+    display: none;
+    position: absolute;
+    background-color: #f7f7f7;
+    min-width: 13.2vw;
+    overflow: auto;
+  }
+
+  .option-dropdown a {
+    font-size: 1vw;
+    color: black;
+    text-decoration: none;
+    padding: 15px 15px 0 15px;
+    display: block;
+  }
+
+  .option-1 a:hover {
+    color: rgb(187, 187, 187);
+  }
+
+  .show {
+    display: block;
+  }
+
+  .option-2 {
+    display: flex;
+    height: 1.5vw;
+    max-height: 21px;
+    margin-left: 1vw;
+  }
+
+  #selected {
+    color: rgb(255, 50, 0);
+  }
+
+  /* 바디 내용 시작 web web 웹 */
+  .container {
+    height: 80vh;
+    overflow: auto;
+    margin-bottom: 50px;
+    font-size: 1vw;
+  }
+
+  .column-left {
+    width: 100%;
+  }
+
+  .card {
+    padding-bottom: 1.2vw;
+    margin-bottom: 1.2vw;
+    border-bottom: 1px solid black;
+    display: flex;
+  }
+
+  .category {
+    width: 12vw;
+  }
+
+  /* 우측 Column */
+  .column-right {
+    width: 35vw;
+    position: absolute;
+    top: 22vh;
+    left: 55vw;
+  }
+
+  .images_text {
+    font-family: "gothica1";
+    font-size: 0.8vw;
+  }
+
+  /* 0 RBC */
+  .card2-2:hover {
+    color: rgb(255, 89, 28);
+  }
+
+  .images-2-2-RBC {
+    display: none;
+  }
+
+  /* 0 RBC 애월 AD */
+  .card2-22:hover {
+    color: rgb(255, 89, 28);
+  }
+
+  .images-2-22-RBC {
+    display: none;
+  }
+
+  /* 1 KIAF */
+  .card1:hover {
+    color: #744aca;
+  }
+
+  .card102:hover {
+    color: #744aca;
+  }
+
+  .card103:hover {
+    color: #744aca;
+  }
+
+  .images-1-Kiaf {
+    display: none;
+  }
+
+  .images-102-Kiaf {
+    display: none;
+  }
+
+  .images-103-Kiaf {
+    display: none;
+  }
+
+  /* 2 RBC */
+  .card2:hover {
+    color: rgb(255, 89, 28);
+  }
+
+  .images-2-RBC {
+    display: none;
+  }
+
+  /* 4 hera AP */
+  .card4:hover {
+    color: rgb(19, 86, 255);
+  }
+
+  .images-4-heracell {
+    display: none;
+    font-family: "gothica1";
+    font-size: 15px
+  }
+
+  .card4glow:hover {
+    color: rgb(19, 86, 255);
+  }
+
+  .images-4-heraglow {
+    display: none;
+    font-family: "gothica1";
+  }
+
+  /*  hera 파우더매트 */
+  .card7:hover {
+    color: rgb(19, 86, 255);
+  }
+
+  .images-7-heralip {
+    display: none;
+  }
+
+  /*  hera airy blur powder matte */
+  .card4blur:hover {
+    color: rgb(19, 86, 255);
+  }
+
+  .images-4-herablur {
+    display: none;
+  }
+
+  /* AP TIME RESPONSE */
+  .card4time:hover {
+    color: rgb(19, 86, 255);
+  }
+
+  .images-4-aptime {
+    display: none;
+    font-family: "gothica1";
+  }
+
+  /* LIVE */
+  .card4live:hover {
+    color: rgb(19, 86, 255);
+  }
+
+  .images-4-live {
+    display: none;
+  }
+
+  /* 인스타그램스토리 AP */
+  .card4story:hover {
+    color: rgb(19, 86, 255);
+  }
+
+  .images-4-story {
+    display: none;
+  }
+
+  /* 5 Allganic */
+  .card5:hover {
+    color: rgb(98, 232, 152);
+  }
+
+  .images-5-Allganic {
+    display: none;
+  }
+
+  /* 6 ewha */
+  .card6:hover {
+    color: rgb(0, 135, 54);
+  }
+
+  .images-6-ewha {
+    display: none;
+  }
+
+  /* 9 waterdrops */
+  .card9:hover {
+    color: rgb(61, 79, 152);
+  }
+
+  .images-9-waterdrops {
+    display: none;
+  }
+
+  /* 0 2022 연하장 */
+  .card2022:hover {
+    color: rgb(170, 170, 170);
+  }
+
+  .images-0-NYCards {
+    display: none;
+  }
+
+  /* 0 사진 없는 기타 항목 */
+  .cardetc:hover {
+    color: rgb(170, 170, 170);
+  }
+
+  /* FOOTER 하단바 웹사이즈 */
+  footer {
+    padding: 3vh 0 6vh 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.30);
+    font-size: 1vw;
+    font-weight: 400;
+    line-height: 140%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer_row {
+    margin: 0 0 6vh 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer_c4 {
+    text-align: right;
+  }
+
+  #bigger {
+    font-size: 3vw;
+    font-weight: 300;
+  }
+
+  /* 모바일사이즈  모바일사이즈  모바일사이즈 */
+  @media only screen and (max-width: 700px) {
+    body {
+      margin: 0 3.8vw 0 3.8vw;
+    }
+
+    header {
+      margin: 1.5vh 0 6vh 0;
+    }
+
+    .header_name {
+      font-size: 4.2vw;
+    }
+
+    #header_namekor {
+      font-size: 3.5vw;
+    }
+
+    .header_navi {
+      font-size: 4vw;
+    }
+
+    .header_navi>a {
+      margin-left: 3vw;
+    }
+
+    /* 옵션바 mobile */
+    .optionbar {
+      margin-bottom: 3vh;
+    }
+
+    #optionbtn {
+      font-size: 4vw;
+    }
+
+    .option-dropdown a {
+      font-size: 4vw;
+      min-width: 40vw;
+      overflow: auto;
+    }
+
+    /* 리스트 or 갤러리 mobile */
+    .option-2 {
+      font-size: 4vw;
+      margin-left: 3vw;
+    }
+
+    /* 바디  바디  바디 mobile */
+    .container {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 12vh;
+      height: auto;
+      font-size: 3.5vw;
+      line-height: 140%;
+    }
+
+    .column-left {
+      width: 100%;
+    }
+
+    .card {
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid black;
+    }
+
+    .category {
+      width: 25%;
+    }
+
+    .projectname {
+      flex: 1;
+    }
+
+    .column-right {
+      display: none;
+    }
+
+    /* FFFFFOOOOOTER mobile */
+    footer {
+      background-color: #f7f7f7;
+      margin: 0 -3.8vw 0 -3.8vw;
+      padding: 3vh 3.8vw 6vh 3.8vw;
+
+      font-size: 3vw;
+    }
+
+    .footer_row {
+      margin: 0 0 6vh 0;
+    }
+
+    .footer_c4 {
+      display: none;
+    }
+
+    .footer_row {
+      margin: 0 0 6vh 0;
+    }
+
+    .footer_c4 {
+      display: none;
+    }
+  }
+</style>
+
+<body>
+  <header>
+    <a class="header_name" href="./index.html">
+      Younghyun Song <span id="header_namekor">송영현</span>
+    </a>
+    <div class="header_navi">
+      <a href="./04_interest_snow.html">interest</a>
+      <a href="./05_about.html">about</a>
+    </div>
+  </header>
+  <div class="optionbar">
+    <div class="option-1">
+      <button onclick="myFunction()" id="optionbtn">
+        All
+      </button>
+      <div class="option-dropdown" id="option-dropdown">
+        <a id="selected" href="./index - list.html">All</a>
+        <a href="./index - graphic - list.html">Graphic ∙ Identity</a>
+        <a href="./index - Media - list.html">Media</a>
+        <a href="./index - interest.html">interest</a>
+      </div>
+    </div>
+    <div style="display: flex;">
+      <a class="option-2" href="./index.html">
+        gallery</a>
+      <a id="selected" class="option-2" href="./index - list.html">
+        index</a>
+    </div>
+  </div>
+  <script>
+    function myFunction() {
+      document.getElementById("option-dropdown").classList.toggle("show");
+    } window.onclick = function (event) {
+      if (!event.target.matches('#optionbtn')) {
+        var dropdowns = document.getElementsByClassName("option-dropdown");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
+  </div>
+  <div class="container">
+    <div class="column-left"> <a href="./12_RBC_Aewol.html" class="card card2-2">
+        <div class="category">
+          Identity
+        </div>
+        <div class="projectname">
+          RBC Aewol, Radical Brewing Club Aewol
+        </div>
+      </a> <a href="./12_RBC_Aewol AD.html" class="card card2-22">
+        <div class="category">
+          Identity
+        </div>
+        <div class="projectname">
+          RBC Aewol AD in eyesmagazine
+        </div>
+      </a> <a href="./11_Kiaf SEOUL 1.html" class="card card1">
+        <div class="category">
+          Graphic
+        </div>
+        <div class="projectname">
+          Kiaf SEOUL 2021
+        </div>
+      </a> <a href="./11_Kiaf SEOUL 2.html" class="card card102">
+        <div class=" category">
+          Graphic
+        </div>
+        <div class="projectname">
+          Kiaf SEOUL 2021 ADs
+        </div>
+      </a> <a href="./11_Kiaf SEOUL 3.html" class="card card103">
+        <div class=" category">
+          Graphic
+        </div>
+        <div class="projectname">
+          Kiaf SEOUL 2021 Printed Matters
+        </div>
+      </a> <a href="./12_RBC.html" class="card card2">
+        <div class="category">
+          Identity
+        </div>
+        <div class="projectname">
+          RBC, Radical Brewing Club
+        </div>
+      </a> <a href="./16_Newyearscard_2022.html" class="card card2022">
+        <div class="category">
+          Illustration
+        </div>
+        <div class="projectname">
+          2022, New Years Card
+        </div>
+      </a> <a href="./13_AP Hera Cell Essence.html" class="card card4">
+        <div class=" category">
+          Media
+        </div>
+        <div class="projectname">
+          Hera Cell essence biom+
+        </div>
+      </a> <a href="./17_AP powdermatte.html" class="card card7">
+        <div class="category">
+          Media
+        </div>
+        <div class=" projectname">
+          Hera Sensual Powder Matte 2020FW 3d motion film
+        </div>
+      </a> <a href="./17_AP iglowme.html" class="card card4glow">
+        <div class="category">
+          Media
+        </div>
+        <div class="projectname">
+          Hera I Glow Me collection film
+        </div>
+      </a> <a href="./17_AP airy blur priming powder.html" class="card card4blur">
+        <div class="category">
+          Media
+        </div>
+        <div class="projectname">
+          Hera Airy Blur Priming Powder
+        </div>
+      </a> <a href="./17_AP time response.html" class="card card4time">
+        <div class="category">
+          Media
+        </div>
+        <div class="projectname">
+          AP Time Response Base & Foundation
+        </div>
+      </a> <a href="./17_AP livecommerce.html" class="card card4live">
+        <div class="category">
+          Media
+        </div>
+        <div class="projectname">
+          Amorepacific Live Commerce
+        </div>
+      </a> <a href="./17_AP story.html" class="card card4story">
+        <div class="category">
+          Media
+        </div>
+        <div class="projectname">
+          Amorepacific instagram story
+        </div>
+      </a> <a href="./14_Allganic.html" class="card card5">
+        <div class="category">
+          Identity
+        </div>
+        <div class="projectname">
+          Allganic
+        </div>
+      </a> <a href="./15_Ewha.html" class="card card6">
+        <div class="category">
+          Illustration
+        </div>
+        <div class="projectname">
+          Souvenir for Ewha
+        </div>
+      </a>
+    </div> <a href="./18_Waterdrops.html" class="card card9 " style="border-bottom: 0px solid black;">
+      <div class=" category">
+        Creative
+      </div>
+      <div class=" projectname">
+        Waterdrops, Sam Young Hwang
+      </div>
+    </a>
+  </div>
+  <div class="column-right">
+    <div class="images-2-2-RBC">
+      <img src="./00_home/2-images-rbc/aewol-01.jpeg" alt="">
+    </div>
+    <div class="images-2-22-RBC">
+      <img src="./12-RBC-eyes/00-thumbnail.gif" alt="">
+    </div>
+    <div class="images-1-Kiaf">
+      <img src="./00_home/1-images-Kiaf/Kiaf2021_01.png" alt="">
+    </div>
+    <div class="images-2-RBC">
+      <img src="./00_home/2-images-rbc/logo@2x.jpg" alt="">
+    </div>
+    <div class="images-102-Kiaf">
+      <img src="./00_home/1-images-Kiaf/Kiaf2021_01-2.gif" alt="">
+    </div>
+    <div class="images-103-Kiaf">
+      <img src="./00_home/1-images-Kiaf/Kiaf2021_01-3.png" alt="">
+    </div>
+    <div class="images-4-heracell">
+      <img src="./00_home/3-hera-cell/cell essence_thumnail.gif" alt="">
+      <a class="images_text" href=" https://www.instagram.com/p/B-qYCGUJFi3/?utm_source=ig_web_copy_link">
+        <br>
+        @herabeauty_official</a>
+    </div>
+    <div class="images-4-heraglow">
+      <img src="./00_home/8-AP/03-hera glow.gif" alt="">
+    </div>
+    <div class="images-7-heralip">
+      <img src="./00_home/8-AP/02-hera-lip-matte.gif" alt="">
+    </div>
+    <div class="images-4-herablur">
+      <img src="./00_home/8-AP/03-hera airyblur.gif" alt="">
+    </div>
+    <div class="images-4-aptime">
+      <img src="./00_home/8-AP/04-Time response.gif" alt="">
+    </div>
+    <div class="images-4-live">
+      <img src="./00_home/8-AP/05-live.jpg" alt="">
+    </div>
+    <div class="images-4-story">
+      <img src="./00_home/8-AP/06_insta-story.gif" alt="">
+    </div>
+    <div class="images-0-NYCards">
+      <img src="./00_home/0-Newyears Card_2022/2022_02.jpg">
+    </div>
+    <div class="images-5-Allganic">
+      <img src="./00_home/4-images-allgnaic/allganic.png" alt="">
+    </div>
+    <div class="images-6-ewha">
+      <img src="./00_home/6-images-ewha/ewha-image.png" alt="">
+    </div>
+    <div class="images-9-waterdrops">
+      <img src="./00_home/9-images-waterdrops/thumbnail-waterdrops.jpg" alt="">
+    </div>
+  </div>
+  </div>
+
+  <footer>
+    <div class="footer_row">
+      <div class="footer_c1">
+        <a class="header_name" href="./index.html">Younghyun Song</a>
+      </div>
+      <div class="footer_c2">
+        in Seoul<br>
+        Graphic Designer <br>
+        Brand Thinker <br>
+      </div>
+      <div class="footer_c3">
+        Contact <br>
+        <span id="underline">
+          <a href="mailto:" yhyun4156@gmail.com">yhyun4156@gmail.com</a><br>
+          <a href="https://www.instagram.com/ma_frame/" target="_blank">instagram ↗</a>
+        </span>
+      </div>
+      <div class="footer_c4">
+        <a id="bigger" href="#">↑</a>
+      </div>
+    </div>
+    <div>
+      © Younghyun Song. 2022 </div>
+  </footer>
+
+  <script>
+
+
+    var card2a = document.querySelector(".card2-2")
+    card2a.addEventListener("mouseover", function () {
+      var images2a = document.querySelector(".images-2-2-RBC")
+      images2a.style.display = "block";
+    })
+
+    var card2a = document.querySelector(".card2-2")
+    card2a.addEventListener("mouseout", function () {
+      var images2a = document.querySelector(".images-2-2-RBC")
+      images2a.style.display = "none";
+    })
+
+
+    var card2ad = document.querySelector(".card2-22")
+    card2ad.addEventListener("mouseover", function () {
+      var images2ad = document.querySelector(".images-2-22-RBC")
+      images2ad.style.display = "block";
+    })
+
+    var card2ad = document.querySelector(".card2-22")
+    card2ad.addEventListener("mouseout", function () {
+      var images2ad = document.querySelector(".images-2-22-RBC")
+      images2ad.style.display = "none";
+    })
+
+
+    var card1 = document.querySelector(".card1")
+    card1.addEventListener("mouseover", function () {
+      var images1 = document.querySelector(".images-1-Kiaf")
+      images1.style.display = "block";
+    })
+
+    var card1 = document.querySelector(".card1")
+    card1.addEventListener("mouseout", function () {
+      var images1 = document.querySelector(".images-1-Kiaf")
+      images1.style.display = "none";
+    })
+
+
+    var card102 = document.querySelector(".card102")
+    card102.addEventListener("mouseover", function () {
+      var images102 = document.querySelector(".images-102-Kiaf")
+      images102.style.display = "block";
+    })
+
+    var card102 = document.querySelector(".card102")
+    card102.addEventListener("mouseout", function () {
+      var images102 = document.querySelector(".images-102-Kiaf")
+      images102.style.display = "none";
+    })
+
+
+    var card103 = document.querySelector(".card103")
+    card103.addEventListener("mouseover", function () {
+      var images103 = document.querySelector(".images-103-Kiaf")
+      images103.style.display = "block";
+    })
+
+    var card103 = document.querySelector(".card103")
+    card103.addEventListener("mouseout", function () {
+      var images103 = document.querySelector(".images-103-Kiaf")
+      images103.style.display = "none";
+    })
+
+
+    var card2 = document.querySelector(".card2")
+    card2.addEventListener("mouseover", function () {
+      var images2 = document.querySelector(".images-2-RBC")
+      images2.style.display = "block";
+    })
+
+    var card2 = document.querySelector(".card2")
+    card2.addEventListener("mouseout", function () {
+      var images2 = document.querySelector(".images-2-RBC")
+      images2.style.display = "none";
+    })
+
+
+    var card4 = document.querySelector(".card4")
+    card4.addEventListener("mouseover", function () {
+      var images4 = document.querySelector(".images-4-heracell")
+      images4.style.display = "block";
+    })
+
+    var card4 = document.querySelector(".card4")
+    card4.addEventListener("mouseout", function () {
+      var images4 = document.querySelector(".images-4-heracell")
+      images4.style.display = "none";
+    })
+
+
+    var card4glow = document.querySelector(".card4glow")
+    card4glow.addEventListener("mouseover", function () {
+      var images4glow = document.querySelector(".images-4-heraglow")
+      images4glow.style.display = "block";
+    })
+
+    var card4glow = document.querySelector(".card4glow")
+    card4glow.addEventListener("mouseout", function () {
+      var images4glow = document.querySelector(".images-4-heraglow")
+      images4glow.style.display = "none";
+    })
+
+
+    var card7 = document.querySelector(".card7")
+    card7.addEventListener("mouseover", function () {
+      var images7 = document.querySelector(".images-7-heralip")
+      images7.style.display = "block";
+    })
+
+    var card7 = document.querySelector(".card7")
+    card7.addEventListener("mouseout", function () {
+      var images7 = document.querySelector(".images-7-heralip")
+      images7.style.display = "none";
+    })
+
+
+    var card4blur = document.querySelector(".card4blur")
+    card4blur.addEventListener("mouseover", function () {
+      var images4blur = document.querySelector(".images-4-herablur")
+      images4blur.style.display = "block";
+    })
+
+    var card4blur = document.querySelector(".card4blur")
+    card4blur.addEventListener("mouseout", function () {
+      var images4blur = document.querySelector(".images-4-herablur")
+      images4blur.style.display = "none";
+    })
+
+
+    var card4time = document.querySelector(".card4time")
+    card4time.addEventListener("mouseover", function () {
+      var images4time = document.querySelector(".images-4-aptime")
+      images4time.style.display = "block";
+    })
+
+    var card4time = document.querySelector(".card4time")
+    card4time.addEventListener("mouseout", function () {
+      var images4time = document.querySelector(".images-4-aptime")
+      images4time.style.display = "none";
+    })
+
+
+    var card4live = document.querySelector(".card4live")
+    card4live.addEventListener("mouseover", function () {
+      var images4live = document.querySelector(".images-4-live")
+      images4live.style.display = "block";
+    })
+
+    var card4live = document.querySelector(".card4live")
+    card4live.addEventListener("mouseout", function () {
+      var images4live = document.querySelector(".images-4-live")
+      images4live.style.display = "none";
+    })
+
+
+    var card4story = document.querySelector(".card4story")
+    card4story.addEventListener("mouseover", function () {
+      var images4story = document.querySelector(".images-4-story")
+      images4story.style.display = "block";
+    })
+
+    var card4story = document.querySelector(".card4story")
+    card4story.addEventListener("mouseout", function () {
+      var images4story = document.querySelector(".images-4-story")
+      images4story.style.display = "none";
+    })
+
+
+    var card5 = document.querySelector(".card5")
+    card5.addEventListener("mouseover", function () {
+      var images5 = document.querySelector(".images-5-Allganic")
+      images5.style.display = "block";
+    })
+
+    var card5 = document.querySelector(".card5")
+    card5.addEventListener("mouseout", function () {
+      var images5 = document.querySelector(".images-5-Allganic")
+      images5.style.display = "none";
+    })
+
+
+    var card6 = document.querySelector(".card6")
+    card6.addEventListener("mouseover", function () {
+      var images6 = document.querySelector(".images-6-ewha")
+      images6.style.display = "block";
+    })
+
+    var card6 = document.querySelector(".card6")
+    card6.addEventListener("mouseout", function () {
+      var images6 = document.querySelector(".images-6-ewha")
+      images6.style.display = "none";
+    })
+
+
+    var card9 = document.querySelector(".card9")
+    card9.addEventListener("mouseover", function () {
+      var images9 = document.querySelector(".images-9-waterdrops")
+      images9.style.display = "block";
+    })
+
+    var card9 = document.querySelector(".card9")
+    card9.addEventListener("mouseout", function () {
+      var images9 = document.querySelector(".images-9-waterdrops")
+      images9.style.display = "none";
+    })
+
+    var images2022 = document.querySelector(".card2022")
+    images2022.addEventListener("mouseover", function () {
+      var images2022 = document.querySelector(".images-0-NYCards")
+      images2022.style.display = "block";
+    })
+    var images2022 = document.querySelector(".card2022")
+    images2022.addEventListener("mouseout", function () {
+      var images2022 = document.querySelector(".images-0-NYCards")
+      images2022.style.display = "none";
+    })
+
+  </script>
+</body>
+
+</html>
