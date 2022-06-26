@@ -147,50 +147,6 @@
     cursor: pointer;
   }
 
-  #optionbtn:hover,
-  #optionbtn:focus {
-    color: rgb(187, 187, 187);
-    text-decoration: underline;
-  }
-
-  .option-1 {
-    position: relative;
-    display: inline-block;
-  }
-
-  .option-dropdown {
-    margin: 5px 0px 0px -0.5vw;
-    padding-bottom: 15px;
-    display: none;
-    position: absolute;
-    background-color: #f7f7f7;
-    min-width: 13.2vw;
-    overflow: auto;
-  }
-
-  .option-dropdown a {
-    font-size: 1vw;
-    color: black;
-    text-decoration: none;
-    padding: 15px 15px 0 15px;
-    display: block;
-  }
-
-  .option-1 a:hover {
-    color: rgb(187, 187, 187);
-  }
-
-  .show {
-    display: block;
-  }
-
-  .option-2 {
-    display: flex;
-    height: 1.5vw;
-    max-height: 21px;
-    margin-left: 1vw;
-  }
-
   #selected {
     color: rgb(255, 50, 0);
   }
@@ -297,22 +253,7 @@
     /* 옵션바 mobile */
     .optionbar {
       margin-bottom: 3vh;
-    }
-
-    #optionbtn {
       font-size: 4vw;
-    }
-
-    .option-dropdown a {
-      font-size: 4vw;
-      min-width: 40vw;
-      overflow: auto;
-    }
-
-    /* 리스트 or 갤러리 mobile */
-    .option-2 {
-      font-size: 4vw;
-      margin-left: 3vw;
     }
 
     /* 바디  바디  바디 mobile */
@@ -325,7 +266,9 @@
     .box {
       font-size: 3.5vw;
       line-height: 140%;
+
       margin: 0vw 0vw 6vh 0vw;
+
       width: 100%;
     }
 
@@ -333,7 +276,7 @@
       margin-bottom: 15px;
       width: 100%;
       height: auto;
-      max-height: 35vh;
+      max-height: 25vh;
     }
 
     /* FFFFFOOOOOTER mobile */
@@ -375,92 +318,11 @@
   </header>
 
   <div class="optionbar">
-    <div class="option-1">
-      <button onclick="myFunction()" id="optionbtn">
-        All
-      </button>
-      <div class="option-dropdown" id="option-dropdown">
-        <a id="selected" href="./index.html">All</a>
-        <a href="./index - graphic.html">Graphic ∙ Identity</a>
-        <a href="./index - media.html">Media</a>
-        <a href="./index - interest.html">interest</a>
-      </div>
-    </div>
-
-    <div style="display: flex;">
-      <a id="selected" class="option-2" href="./index.html">
-        gallery</a>
-      <a class="option-2" href="./index - list.html">
-        index</a>
-    </div>
+    Works for AP
   </div>
-  <script>
-    function myFunction() {
-      document.getElementById("option-dropdown").classList.toggle("show");
-    } window.onclick = function (event) {
-      if (!event.target.matches('#optionbtn')) {
-        var dropdowns = document.getElementsByClassName("option-dropdown");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-      }
-    }
-  </script>
+
   </div>
   <div class="container">
-    <a class="box" href="./12_RBC_Aewol.html">
-      <div class="thumbnail-box"><img class="thumbnail" src="./00_home/2-images-rbc/aewol-01.jpeg" alt="">
-      </div>
-      RBC Aewol, Radical Brewing Club Aewol <br>
-      <span style="color: rgba(0, 0, 0, 0.5);">
-        Graphic</span>
-    </a>
-
-    <a class="box" href="./12_RBC_Aewol AD.html">
-      <div class="thumbnail-box"><img class="thumbnail" src="./12-RBC-eyes/eyesmag-thumbnail.gif" alt="">
-      </div>RBC Aewol AD in eyesmagazine
-      <span style="color: rgba(0, 0, 0, 0.5);">
-        Graphic, Motion</span>
-    </a>
-
-    <a class="box" href="./11_Kiaf SEOUL 1.html">
-      <div class="thumbnail-box"><img class="thumbnail" src="./00_home/1-images-Kiaf/Kiaf2021_01.png" alt="">
-      </div>Kiaf SEOUL 2021
-      <span style="color: rgba(0, 0, 0, 0.5);">
-        Graphic</span>
-    </a>
-
-    <a class="box" href="./11_Kiaf SEOUL 2.html">
-      <div class="thumbnail-box"><img class="thumbnail" src="./00_home/1-images-Kiaf/Kiaf2021_01-2.gif" alt="">
-      </div>Kiaf SEOUL 2021 ADs
-      <span style="color: rgba(0, 0, 0, 0.5);">
-        Graphic</span>
-    </a>
-
-    <a class="box" href="./11_Kiaf SEOUL 3.html">
-      <div class="thumbnail-box"><img class="thumbnail" src="./00_home/1-images-Kiaf/Kiaf2021_01-3.png" alt="">
-      </div>Kiaf SEOUL 2021 Printed Matters
-      <span style="color: rgba(0, 0, 0, 0.5);">
-        Graphic, Editorial</span>
-    </a>
-
-    <a class="box" href="./12_RBC.html">
-      <div class="thumbnail-box"><img class="thumbnail" src="./00_home/2-images-rbc/logo@2x.jpg" alt="">
-      </div>RBC, Radical Brewing Club
-      <span style="color: rgba(0, 0, 0, 0.5);">
-        Identity, Graphic</span>
-    </a>
-
-    <a class="box" href="./16_Newyearscard_2022.html">
-      <div class="thumbnail-box"><img class="thumbnail" src="./16_Newyearscard_2022/2022_thumbnail.jpg" alt="">
-      </div>2022, New Years Card
-      <span style="color: rgba(0, 0, 0, 0.5);">
-        Graphic</span>
-    </a>
 
     <a class="box" href="./17_AP Hera Cell Essence.html">
       <div class="thumbnail-box"><img class="thumbnail" src="./00_home/3-hera-cell/cell essence_thumnail.gif" alt="">
@@ -509,28 +371,6 @@
       </div>Amorepacific Instagram Story
       <span style="color: rgba(0, 0, 0, 0.5);">
         Graphic, Media</span>
-    </a>
-
-    <a class="box" href="./14_Allganic.html">
-      <div class="thumbnail-box"><img class="thumbnail" src="./00_home/4-images-allgnaic/allganic.png" alt="">
-      </div>Allganic
-      <span style="color: rgba(0, 0, 0, 0.5);">
-        Identity, Graphic</span>
-    </a>
-
-    <a class="box" href="./15_Ewha.html">
-      <div class="thumbnail-box"><img class="thumbnail" src="./00_home/6-images-ewha/ewha-image.png" alt="">
-      </div>Souvenir for Ewha
-      <span style="color: rgba(0, 0, 0, 0.5);">
-        Graphic</span>
-    </a>
-
-    <a class="box" href="./18_Waterdrops.html">
-      <div class="thumbnail-box"><img class="thumbnail" src="./00_home/9-images-waterdrops/thumbnail-waterdrops.jpg"
-          alt="">
-      </div> Waterdrops, Sam Young Hwang
-      <span style="color: rgba(0, 0, 0, 0.5);">
-        Visual</span>
     </a>
   </div>
 
